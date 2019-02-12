@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Create Entity View-->
+        <scene sceneID="Pyg-9l-4Lh">
+            <objects>
+                <viewController storyboardIdentifier="CreateEntityView" id="iw9-Eo-Zf0" customClass="CreateEntityView" customModule="TestViper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nHk-WK-pQr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="btU-Oq-fW3">
+                                <rect key="frame" x="16" y="85" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Ca-lI-G2m">
+                                <rect key="frame" x="16" y="143" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yab-0Y-fxd">
+                                <rect key="frame" x="164.5" y="239" width="46" height="30"/>
+                                <state key="normal" title="Create"/>
+                                <connections>
+                                    <action selector="DidTapCreateButton:" destination="iw9-Eo-Zf0" eventType="touchUpInside" id="wbi-NC-pdo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CjO-rx-vDN">
+                                <rect key="frame" x="154" y="277" width="67" height="30"/>
+                                <state key="normal" title="Show List"/>
+                                <connections>
+                                    <action selector="didTapListButton:" destination="iw9-Eo-Zf0" eventType="touchUpInside" id="wnL-NC-DrL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.41568627450000001" green="0.81568627449999997" blue="0.51764705879999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="CjO-rx-vDN" firstAttribute="centerX" secondItem="nHk-WK-pQr" secondAttribute="centerX" id="5Ch-vG-qQS"/>
+                            <constraint firstItem="btU-Oq-fW3" firstAttribute="leading" secondItem="gKg-Pd-MSd" secondAttribute="leading" constant="16" id="5q2-e4-MH6"/>
+                            <constraint firstItem="yab-0Y-fxd" firstAttribute="top" secondItem="1Ca-lI-G2m" secondAttribute="bottom" constant="66" id="6Uj-kr-TEu"/>
+                            <constraint firstItem="CjO-rx-vDN" firstAttribute="top" secondItem="yab-0Y-fxd" secondAttribute="bottom" constant="8" id="7dl-M7-cbb"/>
+                            <constraint firstItem="gKg-Pd-MSd" firstAttribute="trailing" secondItem="1Ca-lI-G2m" secondAttribute="trailing" constant="16" id="Q17-5l-seQ"/>
+                            <constraint firstItem="gKg-Pd-MSd" firstAttribute="trailing" secondItem="btU-Oq-fW3" secondAttribute="trailing" constant="16" id="S7r-bK-RQg"/>
+                            <constraint firstItem="1Ca-lI-G2m" firstAttribute="top" secondItem="btU-Oq-fW3" secondAttribute="bottom" constant="28" id="YUH-WO-Zew"/>
+                            <constraint firstItem="yab-0Y-fxd" firstAttribute="centerX" secondItem="nHk-WK-pQr" secondAttribute="centerX" id="Z35-WE-NQX"/>
+                            <constraint firstItem="btU-Oq-fW3" firstAttribute="top" secondItem="gKg-Pd-MSd" secondAttribute="top" constant="65" id="i5Y-bg-95E"/>
+                            <constraint firstItem="1Ca-lI-G2m" firstAttribute="leading" secondItem="gKg-Pd-MSd" secondAttribute="leading" constant="16" id="zbt-DQ-ESJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gKg-Pd-MSd"/>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="createEntityButton" destination="yab-0Y-fxd" id="f8m-G4-Qo7"/>
+                        <outlet property="nameTextField" destination="btU-Oq-fW3" id="ng0-kr-piq"/>
+                        <outlet property="showListButton" destination="CjO-rx-vDN" id="Hk0-oR-vzs"/>
+                        <outlet property="valueTextField" destination="1Ca-lI-G2m" id="gyD-C5-5GB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4ll-wU-XfF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-63.200000000000003" y="106.59670164917542"/>
+        </scene>
+    </scenes>
+</document>
