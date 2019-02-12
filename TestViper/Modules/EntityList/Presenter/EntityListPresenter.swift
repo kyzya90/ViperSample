@@ -7,10 +7,10 @@
 //
 
 import Foundation
+import UIKit
 
 final class EntityListPresenter {
     
-
     // MARK: Private Data Structures
     
     private enum Localized {
@@ -20,12 +20,6 @@ final class EntityListPresenter {
         }
     }
 
-
-    private enum Constants {
-        
-    }
-    
-    
     // MARK: Public Properties
 
     public weak var view: EntityListViewType?
@@ -36,7 +30,7 @@ final class EntityListPresenter {
 
     private let interactor: EntityListInteractorType
     private let router: EntityListRouterType
-    private var entities: []
+    private var entities: [EntityListViewModel] = []
     
     // MARK: Lifecycle
 
@@ -50,10 +44,7 @@ final class EntityListPresenter {
 
 
 // MARK: - EntityListModuleType
-
-extension EntityListPresenter: EntityListModuleType {
-
-}
+extension EntityListPresenter: EntityListModuleType { }
 
 
 // MARK: - EntityListInteractorDelegate
@@ -61,31 +52,30 @@ extension EntityListPresenter: EntityListModuleType {
 extension EntityListPresenter: EntityListInteractorDelegate {
 
     func didLoadList(_ list: [Entity]) {
+        self.entities = list.map( { EntityListViewModel(name: $0.name,
+                                                        nameColor: UIColor.green,
+                                                        value: $0.value,
+                                                        valueColor: UIColor.blue) } )
+        self.view?.reloadList()
     }
 
     func didFail(with error: Error) {
         self.view?.showError(with: "", description: "")
     }
-
-    
 }
 
 
 // MARK: - EntityListViewDelegate
 
 extension EntityListPresenter: EntityListViewDelegate {
-    func entity(at index: Int) {
-
+    func entity(at index: Int) -> EntityListViewModel {
+        return self.entities[index]
     }
 
     func numberOfEntities() -> Int {
-        return 10
+        return self.entities.count
     }
 
-    
-//    notify delegate that module is ready and can be setup
-//    delegate can save this module and provide data via `update(with:)` method
-//    feel free to add your functionality here
     func viewDidLoad(_ view: EntityListViewType) {
 
         self.moduleDelegate?.moduleDidLoad(self)

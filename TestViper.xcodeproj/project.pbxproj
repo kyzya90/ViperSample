@@ -49,6 +49,7 @@
 		11A96E7D221213D5008AD406 /* EntityListRouterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A96E6F221213D5008AD406 /* EntityListRouterType.swift */; };
 		11A96E7F221213E9008AD406 /* EntityList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11A96E7E221213E9008AD406 /* EntityList.storyboard */; };
 		11F6FFEB22130FC200EB1B14 /* Swinject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11F6FFEA22130FC200EB1B14 /* Swinject.framework */; };
+		11F6FFF02213175100EB1B14 /* EntityListViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F6FFEF2213175100EB1B14 /* EntityListViewModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +97,7 @@
 		11A96E6F221213D5008AD406 /* EntityListRouterType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityListRouterType.swift; sourceTree = "<group>"; };
 		11A96E7E221213E9008AD406 /* EntityList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EntityList.storyboard; sourceTree = "<group>"; };
 		11F6FFEA22130FC200EB1B14 /* Swinject.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Swinject.framework; path = Carthage/Build/iOS/Swinject.framework; sourceTree = "<group>"; };
+		11F6FFEF2213175100EB1B14 /* EntityListViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityListViewModels.swift; sourceTree = "<group>"; };
 		4E54A1A15162C23C20941D8F /* Pods_TestViper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestViper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -255,6 +257,7 @@
 		11A96E5C221213D5008AD406 /* EntityList */ = {
 			isa = PBXGroup;
 			children = (
+				11F6FFEE2213175100EB1B14 /* Models */,
 				11A96E5D221213D5008AD406 /* Assembly */,
 				11A96E61221213D5008AD406 /* Presenter */,
 				11A96E65221213D5008AD406 /* View */,
@@ -311,6 +314,14 @@
 				11A96E6F221213D5008AD406 /* EntityListRouterType.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		11F6FFEE2213175100EB1B14 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				11F6FFEF2213175100EB1B14 /* EntityListViewModels.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		7861D1BAC6709C71208AEE2F /* Frameworks */ = {
@@ -438,6 +449,7 @@
 				11A96E75221213D5008AD406 /* EntityListPresenter.swift in Sources */,
 				115E09322211E10600CCADFB /* CreateEntityViewType.swift in Sources */,
 				115E09402211E5AA00CCADFB /* Entity.swift in Sources */,
+				11F6FFF02213175100EB1B14 /* EntityListViewModels.swift in Sources */,
 				11A96E7A221213D5008AD406 /* EntityListInteractorType.swift in Sources */,
 				115E09382211E10600CCADFB /* CreateEntityRouterType.swift in Sources */,
 				11A96E76221213D5008AD406 /* EntityListViewDelegate.swift in Sources */,

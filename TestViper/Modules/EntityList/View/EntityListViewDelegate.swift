@@ -12,6 +12,6 @@ import Foundation
 protocol EntityListViewDelegate: class {
        
     func viewDidLoad(_ view: EntityListViewType)
-    func entity(at index: Int)
+    func entity(at index: Int) -> EntityListViewModel
     func numberOfEntities() -> Int
 }
