@@ -76,7 +76,7 @@ extension CreateEntityPresenter: CreateEntityViewDelegate {
     }
 
     func didTapShowListButton(_ button: UIButton) {
-        self.router.showList(with: "")
+        self.router.showList()
     }
 
     func viewDidLoad(_ view: CreateEntityViewType) {

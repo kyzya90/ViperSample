@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol CreateEntityContainerType {
-
+protocol CreateEntityContainerType {
+    var dataService: EntityDataServiceType { get }
 }

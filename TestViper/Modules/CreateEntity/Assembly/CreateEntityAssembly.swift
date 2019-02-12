@@ -11,7 +11,7 @@ import UIKit
 
 public final class CreateEntityAssembly {
 
-    fileprivate enum Constants {
+    private enum Constants {
 
         enum Storyboard {
 
@@ -20,7 +20,7 @@ public final class CreateEntityAssembly {
         }
     }
 
-    public class func build(withView view: UIViewController,
+    class func build(withView view: UIViewController,
                             container: CreateEntityContainerType,
                             moduleDelegate: CreateEntityModuleDelegate?) {
 
@@ -36,7 +36,7 @@ public final class CreateEntityAssembly {
     static let storyboard = UIStoryboard(name: Constants.Storyboard.name,
                                          bundle: Bundle(for: CreateEntityView.self))
 
-    public class func view(withContainer container: CreateEntityContainerType,
+    class func view(withContainer container: CreateEntityContainerType,
                            moduleDelegate: CreateEntityModuleDelegate?) -> UIViewController {
 
         let view = self.storyboard
@@ -56,7 +56,7 @@ public final class CreateEntityAssembly {
                                  container: CreateEntityContainerType,
                                  moduleDelegate: CreateEntityModuleDelegate?) {
 
-        let interactor = CreateEntityInteractor()
+        let interactor = CreateEntityInteractor(dataService: container.dataService)
 
         let router = CreateEntityRouter(container: container)
         router.source = view

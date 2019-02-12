@@ -36,7 +36,7 @@ final class EntityListPresenter {
 
     private let interactor: EntityListInteractorType
     private let router: EntityListRouterType
-    
+    private var entities: []
     
     // MARK: Lifecycle
 

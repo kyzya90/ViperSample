@@ -9,7 +9,6 @@
 import Foundation
 
 
-public protocol EntityListContainerType {
-    
-    
+protocol EntityListContainerType {
+    var dataService: EntityDataServiceType { get }
 }

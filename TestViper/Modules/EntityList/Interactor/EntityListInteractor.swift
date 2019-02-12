@@ -10,32 +10,20 @@ import Foundation
 
 
 final class EntityListInteractor {
-    
-    
-    // MARK: Private Data Structures
 
-    private enum Constants {
-
-    }
-    
-    
     // MARK: Public Properties
     
     public weak var delegate: EntityListInteractorDelegate?
     
     
     // MARK: Private Properties
-    
-    
-    // MARK: Lifecycle
-    
-    
-    // MARK: Public
-    
-    
-    // MARK: Private
-    
-    
+    private let entityDataService: EntityDataServiceType
+    private var entities: [Entity] = []
+
+    init(dataService: EntityDataServiceType) {
+        self.entityDataService = dataService
+    }
+
 }
 
 
@@ -44,8 +32,20 @@ final class EntityListInteractor {
 extension EntityListInteractor: EntityListInteractorType {
 
     func loadList() {
+        DispatchQueue.global().async {
+            self.entityDataService.entities(completion: {[weak self] (result) in
+                guard let strongSelf = self else { return }
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let entities):
+                        strongSelf.entities = entities
+                        strongSelf.delegate?.didLoadList(entities)
+                    case .error(let error):
+                        strongSelf.delegate?.didFail(with: error)
+                    }
+                }
+            })
+        }
     }
-
-    
 }
 

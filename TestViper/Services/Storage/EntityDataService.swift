@@ -34,7 +34,7 @@ class EntityDataService: EntityDataServiceType {
         item.absoluteValue = entity.value
 
         do {
-            try context.save()
+            try context.saveRecursively()
             completion(.success)
         } catch {
             completion(.error(error))

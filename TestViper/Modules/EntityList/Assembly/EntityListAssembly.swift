@@ -23,7 +23,7 @@ public final class EntityListAssembly {
     }
 
 
-    public class func build(withView view: UIViewController,
+    class func build(withView view: UIViewController,
                             container: EntityListContainerType,
                             moduleDelegate: EntityListModuleDelegate?) {
         
@@ -40,7 +40,7 @@ public final class EntityListAssembly {
     static let storyboard = UIStoryboard(name: Constants.Storyboard.name,
                                          bundle: Bundle(for: EntityListView.self))
     
-    public class func view(withContainer container: EntityListContainerType,
+    class func view(withContainer container: EntityListContainerType,
                            moduleDelegate: EntityListModuleDelegate?) -> UIViewController {
         
         let view = self.storyboard
@@ -61,7 +61,7 @@ public final class EntityListAssembly {
                                  container: EntityListContainerType,
                                  moduleDelegate: EntityListModuleDelegate?) {
         
-        let interactor = EntityListInteractor()
+        let interactor = EntityListInteractor(dataService: container.dataService)
         
         let router = EntityListRouter(container: container)
         router.source = view

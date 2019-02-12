@@ -31,8 +31,9 @@ final class CreateEntityRouter {
 
 extension CreateEntityRouter: CreateEntityRouterType {
     
-    func showList(with container: String) {
-        let entityList = EntityListAssembly.view(withContainer: EntityListContainerStub(),
+    func showList() {
+        guard let requiredContainer = container as? EntityListContainerType else { return }
+        let entityList = EntityListAssembly.view(withContainer: requiredContainer,
                                                  moduleDelegate: nil)
         self.source?.navigationController?.pushViewController(entityList, animated: true)
     }

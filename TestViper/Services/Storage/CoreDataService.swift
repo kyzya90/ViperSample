@@ -42,3 +42,24 @@ class CoreDataService {
         }
     }
 }
+
+extension NSManagedObjectContext {
+
+    func saveRecursively() throws {
+        guard hasChanges else { return }
+        try save()
+        guard let parentContext = parent else { return }
+        var parentError: Error?
+        parentContext.performAndWait {
+            do {
+                try parentContext.saveRecursively()
+            } catch {
+                parentError = error
+            }
+        }
+        if let error = parentError {
+            throw error
+        }
+    }
+}
+

@@ -10,26 +10,35 @@ import Foundation
 
 final class CreateEntityInteractor {
 
-    // MARK: - Private Data Structures
-
     // MARK: - Public Properties
 
     public weak var delegate: CreateEntityInteractorDelegate?
 
     // MARK: - Private Properties
+    private let dataService: EntityDataServiceType
 
-    // MARK: - Lifecycle
-
-    // MARK: - Public
-
-    // MARK: - Private
-
+    init(dataService: EntityDataServiceType) {
+        self.dataService = dataService
+    }
 }
 
 // MARK: - CreateEntityInteractorType
 
 extension CreateEntityInteractor: CreateEntityInteractorType {
     func save(_ entity: Entity) {
-        self.delegate?.didSave()
+        DispatchQueue.global().async {
+            self.dataService.saveEntity(entity,
+                                        completion: {[weak self] (result) in
+                                            DispatchQueue.main.async {
+                                                guard let strongSelf = self else { return }
+                                                switch result {
+                                                case .success:
+                                                    strongSelf.delegate?.didSave()
+                                                case .error(let error):
+                                                    strongSelf.delegate?.failed(with: error)
+                                                }
+                                            }
+            })
+        }
     }
 }

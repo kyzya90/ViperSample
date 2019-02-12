@@ -10,5 +10,5 @@ import Foundation
 
 protocol CreateEntityRouterType: class {
 
-    func showList(with container: String)
+    func showList()
 }
