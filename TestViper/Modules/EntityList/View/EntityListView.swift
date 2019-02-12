@@ -11,8 +11,8 @@ import UIKit
 
 
 final class EntityListView: UIViewController {
-    
 
+    @IBOutlet weak var tableView: UITableView!
     private enum Localized {
 
         private static var bundle: Bundle {
@@ -20,11 +20,9 @@ final class EntityListView: UIViewController {
         }
     }
 
-
     private enum Constants {
-    
+        static let cellIdentifier: String = "EntityCell"
     }
-
 
     // MARK: Outlets
     
@@ -62,7 +60,7 @@ final class EntityListView: UIViewController {
 
 extension EntityListView: EntityListViewType {
     func reloadList() {
-        
+        self.tableView.reloadData()
     }
 
     func showError(with title: String, description: String) {
@@ -82,4 +80,27 @@ extension EntityListView: EntityListViewType {
                      animated: true,
                      completion: nil)
     }
+}
+
+extension EntityListView: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let requiredDelegate = self.delegate else { return 0 }
+        return requiredDelegate.numberOfEntities()
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let requiredDelegate = self.delegate,
+              let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellIdentifier)
+        else { fatalError("Could not create cell") }
+
+        let viewModel = requiredDelegate.entity(at: indexPath.row)
+        cell.textLabel?.text = viewModel.name
+        cell.textLabel?.textColor = viewModel.nameColor
+        cell.detailTextLabel?.text = viewModel.value
+        cell.detailTextLabel?.textColor = viewModel.valueColor
+
+        return cell
+    }
+
+
 }
