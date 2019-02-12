@@ -23,18 +23,11 @@ final class EntityListView: UIViewController {
     private enum Constants {
         static let cellIdentifier: String = "EntityCell"
     }
-
-    // MARK: Outlets
-    
     
     // MARK: Public Properties
 
     public var delegate: EntityListViewDelegate?
     
-    
-    // MARK: Private Properties
-    
-
     // MARK: Lifecycle
 
     override func viewDidLoad() {
@@ -42,17 +35,6 @@ final class EntityListView: UIViewController {
         
         self.delegate?.viewDidLoad(self)
     }
-    
-    
-    // MARK: Actions
-    
-    
-    // MARK: Public
-    
-    
-    // MARK: Private
-
-
 }
 
 
